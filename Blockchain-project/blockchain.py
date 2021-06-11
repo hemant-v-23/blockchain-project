@@ -39,9 +39,9 @@ def transaction():
     web3=Web3(Web3.HTTPProvider(ganache))
     if web3.isConnected()==True:
 
-        account1="0x13058B69A7953594C492B63dD70E8F3840E2B557"
-        account2="0xf4BCed1B83AD1e8315cbc88E2531c90Cf18b5Eb3"
-        pk="00b7ae94367984e157417ec81d6834072ceab00037aec7d037112c05701667b8"
+        account1="0x76d0A841530DA038721f813D938CE5b995dB54B2"
+        account2="0x00d0e1797F5699fAbe148D08438D2a7370aD0f33"
+        pk="1b3b2efd00a314a460b1f0c666bace146e16787b7d5e9eb96f8d7f5775c94ea8"
 
         nonce=web3.eth.getTransactionCount(account1)
         d={"nonce":nonce,'to':account2,'value':web3.toWei(1,'ether'),'gas':2000000,'gasPrice':web3.toWei('50','gwei')}
@@ -71,7 +71,7 @@ def patient_login():
             if user==i[0]:
                 return render_template("patient.html")
         if flag:
-            return f"<h1>Login unsuccessfull"
+            return f"<h1>Login unsuccessfull</h1>"
     else:
         return render_template("login.html")
 
@@ -93,12 +93,11 @@ def book_an_appointment():
 
         file=open('C:\\Users\Akshay\Pictures\Blockchain-project\\Patient-Hospital.csv','a',newline="")
         write=csv.writer(file)
-        write.writerow(["Booked Appointment details "+user,transaction()])
+        write.writerow(["Booked Appointment details "+user+" ",transaction()])
         file.close()
 
         D=client.add('C:\\Users\Akshay\Pictures\Blockchain-project\\Patient-Hospital.csv')
         d=dict(D)
-        print("\n {}".format(d))
         PHH=d.get('Hash')
         return redirect(url_for("successfull", input=PHH))
 
@@ -123,17 +122,17 @@ def search_medicine():
 
         file=open('C:\\Users\Akshay\Pictures\Blockchain-project\\Patient-Medical.csv','a',newline="")
         write=csv.writer(file)
-        write.writerow(["Requested medicine info"+user,transaction()])
+        write.writerow(["Requested medicine info "+user,transaction()])
         file.close()
 
         D=client.add('C:\\Users\Akshay\Pictures\Blockchain-project\\Patient-Medical.csv')
         d=dict(D)
-        print("\n {}".format(d))
         PMH=d.get('Hash')
 
         return redirect(url_for("successfull", input=PMH))
     else:
         return render_template("search.html")
+
 
 @app.route("/PRAR")
 def PRAR():
@@ -172,7 +171,7 @@ def HRAR():
 
         file=open('C:\\Users\Akshay\Pictures\Blockchain-project\\Patient-Request-And-Reply.csv','a',newline="")
         write=csv.writer(file)
-        h=["Requested appointment from "+user+" is confirmed",transaction()]
+        h=["Requested appointment from "+user+" is confirmed ",transaction()]
         write.writerow(h)
         file.close()
         D=client.add('C:\\Users\Akshay\Pictures\Blockchain-project\\Patient-Request-And-Reply.csv')
@@ -215,7 +214,7 @@ def MRAR():
 
         file=open('C:\\Users\Akshay\Pictures\Blockchain-project\\Patient-Request-And-Reply.csv','a',newline="")
         write=csv.writer(file)
-        h=["Requested Medicine from "+user+" is confirmed",transaction()]
+        h=["Requested Medicine from "+user+" is confirmed ",transaction()]
         write.writerow(h)
         file.close()
         D=client.add('C:\\Users\Akshay\Pictures\Blockchain-project\\Patient-Request-And-Reply.csv')
@@ -227,7 +226,8 @@ def MRAR():
 
 @app.route("/<input>")
 def successfull(input):
-    return f"<h1>Transaction successfull <h1>"+input
+    url="http://127.0.0.1:5001/ipfs/bafybeif4zkmu7qdhkpf3pnhwxipylqleof7rl6ojbe7mq3fzogz6m4xk3i/#/ipfs/"+str(input)
+    return f"<h1>Transaction successfull</h1><a href=\"home\">home</a><br/><br>"+url
 
 if __name__=="__main__":
     upload_files()
