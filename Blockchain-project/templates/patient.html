@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select</title>
+    <style>
+        body{
+        text-align: center;
+        background-image:url("https://enterprise.efax.com/sf-images/default-source/default-album/efax-corporate-healthcare-interoperability-part-1.jpg");
+        }
+
+        button {
+        background-color: #e7e7e7; color: black;
+        border-radius: 4px;
+        transition-duration: 0.2s;
+        width: 200px;
+        height: 80px;
+        }
+
+        button:hover {
+        background-color: #555555;
+        color: white;
+        }
+
+        a{
+        text-decoration: none;
+        color: black;
+        }
+
+        a:hover{
+        color: white;
+        }
+    </style>
+</head>
+<body>
+<h1>SELECT ANY ACTIVITY</h1><br/>
+<form action="#" method="post">
+    <button name="patient" value="patient"><a  href="{{ url_for('book_an_appointment') }}">Book an appointment</a></button><br/><br/>
+    <button name="hospital" value="hospital"><a  href="{{ url_for('search_medicine') }}">Request medicine</a></button><br/><br/>
+    <button name="medical" value="medical"><a  href="{{ url_for('PRAR') }}">Request and reply</a></button><br/><br/>
+</form>
+</body>
+</html>

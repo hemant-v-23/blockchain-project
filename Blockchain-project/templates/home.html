@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <script src="https://kit.fontawesome.com/144e3d69c7.js" crossorigin="anonymous"></script>
+    <style>
+        body{
+        text-align: center;
+        background-image:url("https://enterprise.efax.com/sf-images/default-source/default-album/efax-corporate-healthcare-interoperability-part-1.jpg");
+        }
+
+        button {
+        background-color: #e7e7e7; color: black;
+        border-radius: 4px;
+        transition-duration: 0.2s;
+        width: 200px;
+        height: 80px;
+        }
+
+        button:hover {
+        background-color: #555555;
+        color: white;
+        }
+
+        a{
+        text-decoration: none;
+        color: black;
+        }
+
+        a:hover{
+        color: white;
+        }
+        footer{
+	    background-color: #D6DBDF;
+	    height: 100px;
+	    width: 100%;
+	    padding: 10px;
+	    font-variant: small-caps;
+	    position: fixed;
+        left: 0;
+        bottom: 0;
+        text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>RESOLVING INTEROPERABILITY IN HEALTHCARE</h1>
+<h1>LOGIN AS</h1><br/>
+<form action="#" method="post">
+    <button name="patient" value="patient"><a  href="{{ url_for('patient_login') }}">Patient</a></button><br/><br/>
+    <button name="hospital" value="hospital"><a  href="{{ url_for('hospital_login') }}">Hospital</a></button><br/><br/>
+    <button name="medical" value="medical"><a  href="{{ url_for('medical_login') }}">Medical</a></button><br/><br/>
+</form>
+<footer>
+    <center>
+        <a  class="social" href="https://www.linkedin.com/in/hemant-v-203593192" target="_blank"><i class="fa fa-linkedin-square" style="font-size:30px;color: #000000;" aria-hidden="true"></i></a>
+        <a  class="social" href="https://www.facebook.com/hemanth.rock.566" target="_blank"><i class="fa fa-facebook-official" style="font-size:30px;color: #000000;" aria-hidden="true"></i></a>
+        <a  class="social" href="https://www.instagram.com/hemant._.v/" target="_blank"><i class="fa fa-instagram" style="font-size:30px;color: #000000;" aria-hidden="true"></i></a><br/><br/>
+        <LABEL>Follow above social medias for more info</LABEL><br/><br/>
+        <LABEL>&copy Blockchain Project 2021-2022.</LABEL> </center>
+</footer>
+</body>
+</html>
